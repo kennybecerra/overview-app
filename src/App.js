@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import Login from './components/Login/Login';
+import { Container, Navbar, Nav } from 'react-bootstrap';
+import Reports from './components/Reports/Reports';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand as={Link} to='/'>Home</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link as={NavLink} to='/login'>Login</Nav.Link>
+          <Nav.Link as={NavLink} to='/overview'>Overview</Nav.Link>
+          <Nav.Link as={NavLink} to='/workstation'>WorkStation</Nav.Link>
+          <Nav.Link as={NavLink} to='/reports'>Reports</Nav.Link>
+        </Nav>
+      </Navbar>
+      <Container fluid>
+        <Switch>
+          <Route path='/login' component={Login} />
+          <Route path='/overview' />
+          <Route path='/reports' component={Reports}/>
+          <Route path='/workstation' />
+          <Route path='/' component={Login} />
+        </Switch>
+      </Container>
+    </>
   );
 }
 
