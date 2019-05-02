@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Row, Col, Card } from 'react-bootstrap';
+import axios from 'axios'
 
 class Reports extends Component {
   constructor(props) {
@@ -7,23 +8,35 @@ class Reports extends Component {
     this.username = 'K3BI'
     this.password = 'Actuarial23237723180000000'
 
-    this.state = {};
+    this.state = {
+      AuthenticKey: 'aca4d856f83ecea3d8d840ec6103c062'
+    };
   }
 
   componentDidMount() {
 
-    const credentials = {
-      username: 'K3BI',
-      password: 'Actuarial23237723180000000'
-    }
+    axios.get(`https://cors-anywhere.herokuapp.com/https://authenticjobs.com/api/?api_key=aca4d856f83ecea3d8d840ec6103c062&method=aj.jobs.search&format=json&location=sanfrancisco&keywords=javascript,css,html,react,development,web,frontend&perpage=100&`).then(res => {
 
-    $SP().create(credentials).list("tblAssessments").get().then(function (data) {
-      for (var i = 0; i < data.length; i++) console.log(data[i].getAttribute("Title"));
-    }).catch(function (err) {
-      console.log("Error => ", err)
-    });
+      console.log(res)
+
+
+    }).catch(err => {
+      console.log('there was an error')
+      console.log(err)
+    })
+
+    axios.get(`https://cors-anywhere.herokuapp.com/https://authenticjobs.com/api/?api_key=aca4d856f83ecea3d8d840ec6103c062&method=aj.jobs.getlocations&format=json`).then(res => {
+
+      console.log(res)
+
+
+    }).catch(err => {
+      console.log('there was an error')
+      console.log(err)
+    })
 
     console.log(this.username);
+
   }
 
   render() {

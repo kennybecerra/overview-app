@@ -20,8 +20,8 @@ class Login extends Component {
   }
 
   logIn = (e) => {
-    console.log(e)
     e.preventDefault();
+
   }
 
   render() {
