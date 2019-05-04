@@ -5,6 +5,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 import Reports from './components/Reports/Reports';
 
 function App() {
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -20,7 +21,7 @@ function App() {
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/overview' />
-          <Route path='/reports' component={Reports}/>
+          <Route path='/reports' component={Reports} />
           <Route path='/workstation' />
           <Route path='/' component={Login} />
         </Switch>
